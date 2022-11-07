@@ -8,7 +8,7 @@ The main purpose of this small code sample is to access the data of **warcraftlo
 
 Then by gaining access we would then download the date to output specific values in a .csv file extension.
 
-> What date we want to be in our .csb file will be in the main.py file. The functionality will be in the /src directory.
+> What data we want to be in our .csv file will be in the main.py file. The functionality will be in the /src directory.
 
 ### About me
 
