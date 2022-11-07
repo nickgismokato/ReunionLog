@@ -1,12 +1,12 @@
 import requests
 import json
 
-queryName = """query($code:String){
+queryAbilities = """query($code:String){
                 reportData{
                     report(code:$code){
                         masterData(translate:false){
-                            actors(type:"Player"){
-                                id
+                            abilities{
+                                gameID
                                 name
                             }
                         }
@@ -14,16 +14,16 @@ queryName = """query($code:String){
                 }
             }"""
 
-def Get_Data_Name(response, publicURL, **kwargs):
-    data = {"query": queryName, "variables": kwargs}
+def Get_Data_Ability(response, publicURL, **kwargs):
+    data = {"query": queryAbilities, "variables": kwargs}
     with requests.Session() as session:
         session.headers = response
         response = session.get(publicURL, json= data)
     return response.json()
 
-def Get_NameList(response,publicURL, **kwargs):
-    response = Get_Data_Name(response, publicURL, **kwargs)['data']['reportData']['report']['masterData']
+def Get_AbilityList(response,publicURL, **kwargs):
+    response = Get_Data_Ability(response, publicURL, **kwargs)['data']['reportData']['report']['masterData']
     returnList = []
-    for plr in response['actors']:
-        returnList.append((plr['id'],plr['name']))
+    for plr in response['abilities']:
+        returnList.append((plr['gameID'],plr['name']))
     return returnList
