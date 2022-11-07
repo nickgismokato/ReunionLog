@@ -43,4 +43,5 @@ def Read_Token():
         return None
 
 def Retrieve_Headers() -> dict[str, str]:
+    Get_Token()
     return {"Authorization": f"Bearer {Read_Token()}"}
