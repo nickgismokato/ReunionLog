@@ -1,6 +1,7 @@
 import requests
 import json
 
+"""query string to get abilities from given event"""
 queryAbilities = """query($code:String){
                 reportData{
                     report(code:$code){
@@ -14,6 +15,7 @@ queryAbilities = """query($code:String){
                 }
             }"""
 
+"""Gets the data 'abilities' from GraphQL api. Require response, auth-url and event string"""
 def Get_Data_Ability(response, publicURL, **kwargs):
     data = {"query": queryAbilities, "variables": kwargs}
     with requests.Session() as session:
@@ -21,7 +23,8 @@ def Get_Data_Ability(response, publicURL, **kwargs):
         response = session.get(publicURL, json= data)
     return response.json()
 
-def Get_AbilityList(response,publicURL, **kwargs):
+"""Gets the data 'abilities' from GraphQL api as a list. Require response, auth-url and event string"""
+def Get_AbilityList(response, publicURL, **kwargs):
     response = Get_Data_Ability(response, publicURL, **kwargs)['data']['reportData']['report']['masterData']
     returnList = []
     for plr in response['abilities']:
