@@ -2,10 +2,10 @@ import requests
 import json
 
 """query string to get events from given event"""
-queryDeath = """query($code:String){
+queryDamageDone = """query($code:String){
                 reportData{
                     report(code:$code){
-                        events(dataType: Deaths, endTime:9999999999999,  wipeCutoff: 3){
+                        events(dataType: DamageDone, endTime:9999999999999){
                             data
                         }
                     }
@@ -14,9 +14,9 @@ queryDeath = """query($code:String){
 #dataType is an enum. Here it is used to get all death events.
 
 """Gets the data 'events' from GraphQL api. Require response, auth-url and event string"""
-def Get_Data_EventDeath(response, publicURL, **kwargs):
-    data = {"query": queryDeath, "variables": kwargs}
+def Get_Data_EventDamageDone(response, publicURL, **kwargs):
+    data = {"query": queryDamageDone, "variables": kwargs}
     with requests.Session() as session:
         session.headers = response
-        response = session.get(publicURL, json= data)
+        response = session.get(publicURL, json = data)
     return response.json()
