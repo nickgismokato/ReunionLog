@@ -74,6 +74,6 @@ def Read_Token():
         return None
 
 """Return token. Is nesesary for all functions that require token."""
-def Retrieve_Headers() -> dict[str, str]:
+def Retrieve_Headers():
     Get_Token()
     return {"Authorization": f"Bearer {Read_Token()}"}
