@@ -14,6 +14,7 @@
   - [Build](#build)
   - [Install Package](#install-package)
 - [How-To](#how-to)
+- [Disclaimer](#disclaimer)
 
 
 # ReunionLog
@@ -81,3 +82,9 @@ $ pip install ReunionLog
 
 # How-To
 See [Wiki](https://github.com/nickgismokato/ReunionLog/wiki)
+
+# Disclaimer
+The functionality of the functions of this package is bound to change. This is because the **WarcraftLogs API** is in a BETA state as of writing this.
+
+> This package will only be maintained as long as the guild need it. An update of this github will be given when this package no longer is maintained.
+
