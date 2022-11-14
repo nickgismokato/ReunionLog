@@ -37,7 +37,7 @@ new_queryDeath = GqlQuery().fields([reportData_field]).query('query', input={'$c
 
 """Gets the data 'events' from GraphQL api. Require response, auth-url and event string"""
 def Get_Data_EventDeath(response, publicURL, **kwargs):
-    print(new_queryDeath)
+    #print(new_queryDeath)
     data = {"query": queryDeath, "variables": kwargs}
     with requests.Session() as session:
         session.headers = response

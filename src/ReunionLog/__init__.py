@@ -2,6 +2,9 @@
 #Authentication
 from ReunionLog.OAuth.Authentication import Retrieve_Headers
 
+#End
+from ReunionLog.OAuth.EndConnection import EndConnection
+
 #Abilities
 from ReunionLog.Report.ReportAbilities import Get_AbilityList
 from ReunionLog.Report.ReportAbilities import Get_Data_Ability
