@@ -39,7 +39,7 @@ def Get_Auth():
 
 """Get token from OAuth. Can take optional input for storing the token."""
 def Get_Token(store : bool = True):
-    data = {"grant_type":" client_credentials"} #Requered for curl
+    data = {"grant_type":" client_credentials"} #Required for curl
     auth = Get_Auth()
     
     #Get response from session grive tokenURL
