@@ -7,7 +7,7 @@ from gql_query_builder import GqlQuery
 queryDeath = """query($code:String){
                     reportData{
                         report(code:$code){
-                            events(dataType: Deaths, endTime:9999999999999,  wipeCutoff: 3){
+                            events(dataType: Deaths, endTime:9999999999999,  wipeCutoff: 3, useAbilityIDs: false){
                                 data
                             }
                         }
@@ -27,8 +27,11 @@ queryDeath = """query($code:String){
 
 #newQueryDeath
 event_field = GqlQuery().fields(['data']).query('events', input={'dataType' : 'Deaths', 'endTime' : '9999999999999', 'wipeCutoff': '3'}).generate()
+
 reportData_field = GqlQuery().fields([event_field]).query('report', input={'code' : '$code'}).operation('reportData').generate()
+
 new_queryDeath = GqlQuery().fields([reportData_field]).query('query', input={'$code' : 'String'}).generate()
+
 
 #operation('query')
 
@@ -38,6 +41,9 @@ new_queryDeath = GqlQuery().fields([reportData_field]).query('query', input={'$c
 """Gets the data 'events' from GraphQL api. Require response, auth-url and event string"""
 def Get_Data_EventDeath(response, publicURL, **kwargs):
     #print(new_queryDeath)
+    #print(f"event_field: \n{event_field}\n")
+    #print(f"event_field: \n{reportData_field}\n")
+    #print(f"event_field: \n{new_queryDeath}\n")
     data = {"query": queryDeath, "variables": kwargs}
     with requests.Session() as session:
         session.headers = response
